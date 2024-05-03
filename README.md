@@ -1,0 +1,2 @@
+# JavaEasing
+ Ease functions
