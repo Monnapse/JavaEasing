@@ -18,7 +18,8 @@ public class EaseInOutSine extends Easing {
                         "%n Value Change: %s, one third of end: %s, Is Over: %s%n",
                         valueChange,
                         oneThirdEnd,
-                        valueChange > oneThirdEnd
+                        //new Double(valueChange).compareTo(new Double(oneThirdEnd))
+                        Double.compare(valueChange, valueChange)
                 );
                 if (valueChange > oneThirdEnd) {
                     System.out.println("PROTECTION");
