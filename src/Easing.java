@@ -98,7 +98,9 @@ public class Easing {
             return change * (this.endValue - this.startValue);
         } else {
             // Going down
-            return -Math.abs(this.startValue - (this.startValue * (1-change)));
+            //return -Math.abs(this.startValue - (this.startValue * (1-change)));
+            System.out.println(change);
+            return -Math.abs((this.startValue - (change * (this.startValue - this.endValue))) - this.startValue);
         }
     }
 

@@ -43,7 +43,7 @@ TestTween.GetActualValue();
 
 # Example
 ```java
-Easing TestTween = new Easing(EasingType.Sine, EasingDirection.InOut, 0.5);
+Easing TestTween = new Easing(EasingType.Sine, EasingDirection.InOut, 3);
 TestTween.SetValue(0, 15);
 
 while (true) {
