@@ -50,9 +50,9 @@ while (true) {
     TestTween.Update();
 
     System.out.printf(
-            "%nPercentage: %s, Value: %s %n",
-            TestTween.GetPercentage(),
-            TestTween.GetActualValue()
+        "%nPercentage: %s, Value: %s %n",
+        TestTween.GetPercentage(),
+        TestTween.GetActualValue()
     );
 
     Thread.sleep(10);
