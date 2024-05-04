@@ -58,3 +58,16 @@ while (true) {
     Thread.sleep(10);
 }
 ```
+
+# Supported Easing Types
+ * Sine - In, Out, InOut
+ * Cubic - In, Out, InOut
+ * Quint - In, Out, InOut
+ * Circ - In, Out, InOut
+ * Elasti - In, Out, InOut
+ * Quad - In, Out, InOut
+ * Quart - In, Out, InOut
+ * Expo - In, Out, InOut
+ * Back - In, Out, InOut
+ * Bounce - In, Out, InOut
+ * Linear - In, Out, InOut
