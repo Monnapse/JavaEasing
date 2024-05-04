@@ -46,7 +46,6 @@ TestTween.GetActualValue();
 Easing TestTween = new Easing(EasingType.Sine, EasingDirection.InOut, 0.5);
 TestTween.SetValue(0, 15);
 
-boolean hasUpdated = false;
 while (true) {
     TestTween.Update();
 
