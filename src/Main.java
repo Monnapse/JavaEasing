@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         Easing TestTween = new Easing(EasingType.Sine, EasingDirection.InOut, 2);
-        TestTween.SetValue(3, 15);
+        TestTween.SetValue(-3, 5);
         //EaseInOutSine TestTween2 = new EaseInOutSine(0, 15, 30);
         //int cps = 1; // Cycles Per Second
         boolean hasUpdated = false;
@@ -18,7 +18,7 @@ public class Main {
                 break;
             } else if (TestTween.IsComplete()) {
                 System.out.println("COMPLETED");
-                TestTween.ChangeValue(5);
+                //TestTween.ChangeValue(5);
                 hasUpdated = true;
             }
             Thread.sleep(10);

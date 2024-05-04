@@ -46,43 +46,12 @@ public class Easing {
                 this.percentageValue = 1;
             } else {
                 double lastValue = this.percentageValue;
-
                 double value = easeType.Ease(x, easeDirection);
-                //System.out.printf("Value: %s%n", value);
-                //int newNormal = (normal < 0) ? 1 : -1;
                 double valueChange = value - lastValue;
-                //System.out.printf("%n Normal: %s %n", this.normal);
-
-                //if (normal < 0) {
-                //    // Going down
-                //    valueChange = Math.abs(value - lastValue) * -normal;
-                //} else {
-                //    // Going up
-                //    valueChange = Math.abs(value - lastValue) * normal;
-                //}
-
                 double oneThirdEnd = (double) 1/3;
-
-                //System.out.printf(
-                //    "%n Value Change: %s, one third of end: %s, Is Over: %s%n",
-                //    valueChange,
-                //    oneThirdEnd,
-                //    valueChange > oneThirdEnd
-                //);
 
                 this.realValue += ValueChangeToReal(valueChange);
                 this.percentageValue += valueChange;
-
-                //if (valueChange < oneThirdEnd) {
-                //    this.realValue += ValueChangeToReal(valueChange * this.endValue);
-                //    this.percentageValue += valueChange;
-                //} else {
-                //    // Value has changed too much
-                //    // Protection against high value change
-                //    double change = valueChange/2;
-                //    this.realValue += ValueChangeToReal(change);
-                //    this.percentageValue += change;
-                //}
             }
         }
     }
