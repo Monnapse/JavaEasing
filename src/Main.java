@@ -1,18 +1,27 @@
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        //EaseInOutSine TestTween = new EaseInOutSine(EasingType.Sine, EasingDirection.InOut, 0, 5, 3);
+        Easing TestTween = new Easing(EasingType.Sine, EasingDirection.InOut, 0.5);
+        TestTween.SetValue(0, 15);
         //EaseInOutSine TestTween2 = new EaseInOutSine(0, 15, 30);
-        int cps = 1; // Cycles Per Second
-        
+        //int cps = 1; // Cycles Per Second
+        boolean hasUpdated = false;
         while (true) {
-            //TestTween.Update();
-            ////TestTween2.Update();
-            //System.out.println();
-            //System.out.println(TestTween.GetValue());;
-            ////System.out.println(TestTween.endValue);
-            ////System.out.println(TestTween2.GetValue());
-            ////Thread.sleep((1/cps)*1000);
-            //Thread.sleep(1);
+            TestTween.Update();
+
+            System.out.printf(
+                    "%nPercentage: %s, Value: %s %n",
+                    TestTween.GetPercentage(),
+                    (int) TestTween.GetActualValue()
+            );
+
+            if (TestTween.IsComplete() && hasUpdated) {
+                break;
+            } else if (TestTween.IsComplete()) {
+                //System.out.println("COMPLETED");
+                //TestTween.ChangeValue(10);
+                hasUpdated = true;
+            }
+            Thread.sleep(10);
         }
     }
 }
