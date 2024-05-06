@@ -36,7 +36,7 @@ public class Easing {
     /**
      * Updates the current value based on current time since value has changed.
      */
-    public void Update() {
+    public void update() {
         if (isBeingUpdated) {
             double x = (System.currentTimeMillis() - this.startTime) / (duration*1000);
             if (x > 1) {
@@ -46,11 +46,11 @@ public class Easing {
                 this.percentageValue = 1;
             } else {
                 double lastValue = this.percentageValue;
-                double value = easeType.Ease(x, easeDirection);
+                double value = easeType.ease(x, easeDirection);
                 double valueChange = value - lastValue;
                 double oneThirdEnd = (double) 1/3;
 
-                this.realValue += ValueChangeToReal(valueChange);
+                this.realValue += valueChangeToReal(valueChange);
                 this.percentageValue += valueChange;
             }
         }
@@ -60,7 +60,7 @@ public class Easing {
      * Gets the change in value
      * @param change The change in value.
      */
-    private double ValueChangeToReal(double change) {
+    private double valueChangeToReal(double change) {
         //System.out.println(change);
         if (this.normal > 0) {
             // Going up
@@ -75,21 +75,21 @@ public class Easing {
     /**
      * Get the current value at this time. 0 - End Value.
      */
-    public double GetValue() {
+    public double getValue() {
         return this.endValue * this.percentageValue;
     }
 
     /**
      * Get the current completion Percentage.
      */
-    public double GetPercentage() {
+    public double getPercentage() {
         return this.percentageValue;
     }
 
     /**
      * Get the actual value (Adds onto previous operation value).
      */
-    public double GetActualValue() {
+    public double getActualValue() {
         return this.realValue;
     }
 
@@ -98,7 +98,7 @@ public class Easing {
      * @param value The starting value.
      * @param endValue The ending value.
      */
-    public void SetValue(double value, double endValue) {
+    public void setValue(double value, double endValue) {
         this.startTime = System.currentTimeMillis();
         this.realValue = value;
         this.startValue = value;
@@ -111,7 +111,7 @@ public class Easing {
      * Changes the Value.
      * @param endValue The ending value.
      */
-    public void ChangeValue(double endValue) {
+    public void changeValue(double endValue) {
         this.startTime = System.currentTimeMillis();
         this.startValue = this.realValue;
         this.endValue = endValue;
@@ -123,7 +123,7 @@ public class Easing {
     /**
      * Checks if it has reached its end value.
      */
-    public boolean IsComplete() {
+    public boolean isComplete() {
         return !this.isBeingUpdated;
     }
 }
@@ -150,7 +150,7 @@ enum EasingType {
      * @param x The current progress 0-1.
      * @param direction The direction of the ease type.
      */
-    public double Ease(double x, EasingDirection direction) {
+    public double ease(double x, EasingDirection direction) {
         switch(this) {
             case Sine:
                 switch(direction) {
@@ -268,7 +268,7 @@ enum EasingType {
             case Bounce:
                 switch(direction) {
                     case In:
-                        return this.Ease(1 - x, EasingDirection.Out);
+                        return this.ease(1 - x, EasingDirection.Out);
                     case Out:
                         final double n1 = 7.5625;
                         final double d1 = 2.75;
@@ -283,8 +283,8 @@ enum EasingType {
                         }
                     case InOut:
                         return x < 0.5
-                                ? (1 - this.Ease(1 - 2 * x, EasingDirection.Out)) / 2
-                                : (1 + this.Ease(2 * x - 1, EasingDirection.Out)) / 2;
+                                ? (1 - this.ease(1 - 2 * x, EasingDirection.Out)) / 2
+                                : (1 + this.ease(2 * x - 1, EasingDirection.Out)) / 2;
                 }
             case Linear:
                 return x;
